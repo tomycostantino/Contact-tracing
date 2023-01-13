@@ -251,8 +251,12 @@ class Tracker:
                 if contact else None
 
     def _inform_close_contact(self, contact: str, message: str):
-        msg = Messaging()
-        msg.send_message(contact, message)
+        try:
+            msg = Messaging()
+            msg.send_message(contact, message)
+        except Exception as e:
+            print(e)
+
         del msg
 
     def _generate_close_contact_message(self, message: dict) -> str:
