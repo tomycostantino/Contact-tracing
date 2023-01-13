@@ -20,8 +20,6 @@ class Tracker:
 
         self._publisher = MessageBroker(endpoint)  # Broker to publish when required
 
-        self._messaging = Messaging()
-
         self._running = False
 
     def _add_log(self, msg: str):
@@ -249,8 +247,13 @@ class Tracker:
         for message in messages:
             contact = db.check_for_close_contact(message['personId'].lower(), message['contact'], message['position'],
                                                  message['date'])
-            self._messaging.send_message(message['contact'].lower(), self._generate_close_contact_message(message))\
+            self._inform_close_contact(message['contact'].lower(), self._generate_close_contact_message(message))\
                 if contact else None
+
+    def _inform_close_contact(self, contact: str, message: str):
+        msg = Messaging()
+        msg.send_message(contact, message)
+        del msg
 
     def _generate_close_contact_message(self, message: dict) -> str:
         '''
