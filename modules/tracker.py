@@ -4,7 +4,7 @@ import typing
 import threading
 from threading import Thread
 from database.database import Database
-from message_broker import MessageBroker
+from modules.message_broker import MessageBroker
 from modules.twilio.twilio_messaging import Messaging
 
 logger = logging.getLogger()
