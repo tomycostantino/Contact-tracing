@@ -6,14 +6,13 @@ from threading import Thread
 from database.database import Database
 from modules.message_broker import MessageBroker
 from modules.twilio.twilio_messaging import Messaging
+from endpoint import endpoint
 
 logger = logging.getLogger()
 
 
 class Tracker:
     def __init__(self):
-
-        endpoint = 'amqps://bueyyocn:Z4EAvfK6ZD5HTAlSPdrmrBfLcSzSX2Hb@vulture.rmq.cloudamqp.com/bueyyocn'
 
         self._positionBroker = MessageBroker(endpoint)  # Broker to read position queue
         self._userDataBroker = MessageBroker(endpoint)  # Broker to read user_data_get queue
@@ -392,3 +391,8 @@ class Tracker:
         Thread(target=self._read_messages, daemon=True).start()
         Thread(target=self._check_for_recovery, daemon=True).start()
         self._running = True
+        
+
+if __name__ == '__main__':
+    tracker = Tracker()
+    tracker.run()

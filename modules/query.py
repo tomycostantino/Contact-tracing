@@ -2,12 +2,13 @@
 import threading
 from threading import Thread
 from modules.message_broker import MessageBroker
+from endpoint import endpoint
 
 
 class Query:
     def __init__(self):
 
-        self._endpoint = 'amqps://bueyyocn:Z4EAvfK6ZD5HTAlSPdrmrBfLcSzSX2Hb@vulture.rmq.cloudamqp.com/bueyyocn'
+        self._endpoint = endpoint
         self._publisher = MessageBroker(self._endpoint)
         self._id = str(self._get_id())
 

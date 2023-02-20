@@ -1,0 +1,1 @@
+endpoint = 'amqps://wzikpxgq:Sj8JP5q4TNGvdmV56q6drPttPNEnFxzl@vulture.rmq.cloudamqp.com/wzikpxgq'

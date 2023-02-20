@@ -5,6 +5,8 @@ import threading
 from modules.message_broker import MessageBroker
 from datetime import datetime
 from threading import Thread
+from endpoint import endpoint
+
 
 
 class Person:
@@ -12,7 +14,6 @@ class Person:
         self._movement_speed = float(movement_speed)
         self._grid_size = grid_size
 
-        endpoint = 'amqps://bueyyocn:Z4EAvfK6ZD5HTAlSPdrmrBfLcSzSX2Hb@vulture.rmq.cloudamqp.com/bueyyocn'
         self._msgBroker = MessageBroker(endpoint)
 
         self._actual_position = dict()
