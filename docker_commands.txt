@@ -1,0 +1,6 @@
+
+# HOW TO BUILD CONTAINER
+docker build -t tracker_volume . 
+
+# HOW TO RUN CONTAINER WITH VOLUME 
+docker run -v /data tracker_volume

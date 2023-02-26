@@ -1,12 +1,18 @@
 FROM python:latest
 
-RUN apt-get update && apt-get install -y libgmp-dev
+#RUN apt-get update && apt-get install -y libgmp-dev
 
 WORKDIR .
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "tracker_docker.py"]
+# Create a volume for storing the database
+VOLUME /database
+
+# Set the working directory and command to run your program
+WORKDIR .
+
+CMD ["python", "run_tracker.py"]

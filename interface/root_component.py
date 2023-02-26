@@ -21,7 +21,7 @@ class RootComponent(tk.Tk):
         self.protocol('WM_DELETE_WINDOW', self._on_closing)
 
         self.tracker = Tracker()
-        self.tracker.run()
+        #self.tracker.run()
 
         # Create commands frame
         commands_frame = tk.Frame(self)
